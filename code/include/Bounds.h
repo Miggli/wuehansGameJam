@@ -1,13 +1,24 @@
 #pragma once
 
 #include "Halib/Entity.h"
-
+#include <Ball.h>
+#include "Halib/Audio.h"
 struct Bounds : public Halib::Entity
 {
-	static inline const char* const GRAPHIC_PATH = "assets/ball.bmp";
+	static inline const char* const GRAPHIC_PATH = "assets/bounds.bmp";
+	static inline const char* const AUDIOHIT_PATH = "assets/hitHurt.wav";
+	std::shared_ptr<Halib::Audio> audio;
 	
-	Bounds();
+	Bounds(std::shared_ptr<Ball> ball);
+	
 	void Update(float deltaTime) override;
 	
+private: 
+	std::shared_ptr<Ball> myball;
+	int maxY;
+	int maxX;
+	int minY;
+	int minX;
 
+	void SetBallDirectionAndIncreaseSpeed(Halib::Vec2 newDir);
 };

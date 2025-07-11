@@ -3,13 +3,16 @@
 #include "Halib/System.h"
 #include "Character.h"
 #include "Ball.h"
+#include "Bounds.h"
 #include <iostream>
 
 int main() 
 {
 	Halib::Init();
 
+#ifdef DESKTOP
 	srand(time(NULL));
+#endif
 	//Create a player and add it to the system.
 	//Entities will only be updated and drawn, when they have been added via AddEntity(...)
 	std::shared_ptr<Character> player = std::make_shared<Character>(50.0f);
@@ -17,7 +20,8 @@ int main()
 
 	std::shared_ptr<Ball> ball = std::make_shared<Ball>();
 	Halib::AddEntity(ball);
-
+	std::shared_ptr<Bounds> bounds = std::make_shared<Bounds>(ball);
+	Halib::AddEntity(bounds);
 	
 	
 	
