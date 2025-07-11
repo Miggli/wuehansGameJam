@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/CMakeFiles/hall-populate"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/CMakeFiles/hall-populate.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/CMakeFiles/hall-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"hall-populate"
+		],
+		"name" : "hall-populate"
+	}
+}

@@ -1,0 +1,673 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "code/game.elf"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"add_link_options",
+			"target_link_libraries",
+			"add_dependencies",
+			"add_compile_options",
+			"target_compile_definitions",
+			"target_include_directories",
+			"include_directories",
+			"target_sources"
+		],
+		"files" : 
+		[
+			"code/CMakeLists.txt",
+			"CMakeLists.txt",
+			"out/build/x64-Debug/_deps/halib-src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 14,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 55,
+				"parent" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 27,
+				"parent" : 0
+			},
+			{
+				"file" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 102,
+				"parent" : 5
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 19,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 42,
+				"parent" : 2
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 45,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 23,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 55,
+				"parent" : 0
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 20,
+				"parent" : 2
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 39,
+				"parent" : 0
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 67,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-fno-exceptions"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-nostdlib"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-fno-unwind-tables"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-fno-rtti"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-march=rv32im"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-Os"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-Bstatic"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-nostdinc"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-fno-builtin"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 9,
+					"define" : "WUEHANS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 10,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/code/include"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/code/SYSTEM"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/wuehans"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/lib/fatfs/SYSTEM"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-src/include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-src/SYSTEM"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-src/include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/glm-src"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include/libstdc++"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include/libstdc++/riscv32-unknown-elf"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/lib"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include/newlib"
+				}
+			],
+			"language" : "ASM",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=gnu++20"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-fno-exceptions"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-nostdlib"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-fno-unwind-tables"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-fno-rtti"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-march=rv32im"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-Os"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-Bstatic"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-nostdinc"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-fno-builtin"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 9,
+					"define" : "WUEHANS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 10,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/code/include"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/code/SYSTEM"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/wuehans"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/lib/fatfs/SYSTEM"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-src/include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-src/SYSTEM"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-src/include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/glm-src"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include/libstdc++"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include/libstdc++/riscv32-unknown-elf"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/lib"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include/newlib"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				1,
+				3,
+				4,
+				5
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-fno-exceptions"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-nostdlib"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-fno-unwind-tables"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-fno-rtti"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-march=rv32im"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-Os"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-Bstatic"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-nostdinc"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-fno-builtin"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 9,
+					"define" : "WUEHANS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 10,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/code/include"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/code/SYSTEM"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/wuehans"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/lib/fatfs/SYSTEM"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-src/include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-src/SYSTEM"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-src/include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/glm-src"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include/libstdc++"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include/libstdc++/riscv32-unknown-elf"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/lib"
+				},
+				{
+					"backtrace" : 12,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include/newlib"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				2
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 4,
+			"id" : "Halib::@46b9bdfd3d1d59dc2640"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "Hall::@9e83971b523eb69e393f"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "glm::@ce54d98d7b326a3e12a8"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "fatfs::@58be0defe904f779e969"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "copy_assets::@1c76e98fcac0e60aa45c"
+		}
+	],
+	"id" : "game.elf::@1c76e98fcac0e60aa45c",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-nostdlib",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-T",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/wuehans/wuehans.ld",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-Wl,--gc-sections",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-ffreestanding",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-Bstatic",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-fno-builtin",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\s404510\\Documents\\GitHub\\wuehansGameJam\\lib\\newlib\\libc.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\s404510\\Documents\\GitHub\\wuehansGameJam\\lib\\newlib\\libg.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\s404510\\Documents\\GitHub\\wuehansGameJam\\lib\\newlib\\libgloss.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\s404510\\Documents\\GitHub\\wuehansGameJam\\lib\\newlib\\libm.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\s404510\\Documents\\GitHub\\wuehansGameJam\\lib\\newlib\\libgcc.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\s404510\\Documents\\GitHub\\wuehansGameJam\\lib\\libstdc++.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\s404510\\Documents\\GitHub\\wuehansGameJam\\lib\\libsupc++.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "lib\\fatfs\\libfatfs.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "_deps\\halib-build\\libHalib.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "_deps\\hall-build\\libHall.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "_deps\\glm-build\\glm\\libglm.a",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "game.elf",
+	"nameOnDisk" : "game.elf",
+	"paths" : 
+	{
+		"build" : "code",
+		"source" : "code"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				1,
+				2,
+				3,
+				4,
+				5
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 13,
+			"compileGroupIndex" : 0,
+			"path" : "wuehans/start.S",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 13,
+			"compileGroupIndex" : 1,
+			"path" : "wuehans/start.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 13,
+			"compileGroupIndex" : 2,
+			"path" : "wuehans/syscall.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 14,
+			"compileGroupIndex" : 1,
+			"path" : "code/source/main.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 14,
+			"compileGroupIndex" : 1,
+			"path" : "code/source/Character.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 14,
+			"compileGroupIndex" : 1,
+			"path" : "code/source/Ball.cpp",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "EXECUTABLE"
+}

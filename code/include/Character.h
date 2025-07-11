@@ -2,7 +2,7 @@
 
 #include "Halib/Entity.h"
 
-struct Character : public Halib::Entity
+struct Character : public Halib::Entity 
 {
 	static inline const char* const GRAPHIC_PATH = "assets/Mushroom-Run.bmp";
 	const float speed;

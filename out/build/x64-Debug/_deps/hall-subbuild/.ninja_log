@@ -1,0 +1,21 @@
+# ninja log v6
+5	78	7739547126111062	hall-populate-prefix/src/hall-populate-stamp/hall-populate-mkdir	deb940ea1006b80
+5	78	7739547126111062	C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-mkdir	deb940ea1006b80
+79	1979	7739547145100458	hall-populate-prefix/src/hall-populate-stamp/hall-populate-download	b6df1d852482e40
+79	1979	7739547145100458	C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-download	b6df1d852482e40
+1979	3652	7739547145202120	hall-populate-prefix/src/hall-populate-stamp/hall-populate-update	1d3d79d607cf710d
+1979	3652	7739547145202120	C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-update	1d3d79d607cf710d
+3652	3718	7739547162543117	hall-populate-prefix/src/hall-populate-stamp/hall-populate-patch	e44c7e026191c2bd
+3652	3718	7739547162543117	C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-patch	e44c7e026191c2bd
+3718	3784	7739547163179506	hall-populate-prefix/src/hall-populate-stamp/hall-populate-configure	d5eb710b22f08ae0
+3718	3784	7739547163179506	C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-configure	d5eb710b22f08ae0
+3785	3852	7739547163809596	hall-populate-prefix/src/hall-populate-stamp/hall-populate-build	3191415964b5bf36
+3785	3852	7739547163809596	C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-build	3191415964b5bf36
+3852	3920	7739547164447741	hall-populate-prefix/src/hall-populate-stamp/hall-populate-install	5f2a8bd3e80722b8
+3852	3920	7739547164447741	C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-install	5f2a8bd3e80722b8
+3920	3988	7739547165244780	hall-populate-prefix/src/hall-populate-stamp/hall-populate-test	6e798a9abafe1ff
+3920	3988	7739547165244780	C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-test	6e798a9abafe1ff
+3989	4084	7739547166195429	CMakeFiles/hall-populate-complete	ee2f7d689c3c8900
+3989	4084	7739547166195429	hall-populate-prefix/src/hall-populate-stamp/hall-populate-done	ee2f7d689c3c8900
+3989	4084	7739547166195429	C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/CMakeFiles/hall-populate-complete	ee2f7d689c3c8900
+3989	4084	7739547166195429	C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-subbuild/hall-populate-prefix/src/hall-populate-stamp/hall-populate-done	ee2f7d689c3c8900

@@ -1,0 +1,425 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "_deps/halib-build/libHalib.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"target_compile_options",
+			"target_compile_definitions",
+			"target_include_directories",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"out/build/x64-Debug/_deps/halib-src/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 79,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 102,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 83,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 112,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 107,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 5,
+				"file" : 1,
+				"line" : 20,
+				"parent" : 6
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fno-exceptions"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-nostdlib"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fno-unwind-tables"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fno-rtti"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-march=rv32im"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Os"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Bstatic"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-nostdinc"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 4,
+					"define" : "WUEHANS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-src/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-src/external/libbmpread/libbmpread/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-src/external/wav_reader/lib"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-src/SYSTEM"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-src/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/glm-src"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include/libstdc++"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include/libstdc++/riscv32-unknown-elf"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/lib"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include/newlib"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=gnu++20"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fno-exceptions"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-nostdlib"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fno-unwind-tables"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fno-rtti"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-march=rv32im"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Os"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Bstatic"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-nostdinc"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 4,
+					"define" : "WUEHANS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-src/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-src/external/libbmpread/libbmpread/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-src/external/wav_reader/lib"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-src/SYSTEM"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/hall-src/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/glm-src"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include/libstdc++"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include/libstdc++/riscv32-unknown-elf"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/lib"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/system-include/newlib"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "Hall::@9e83971b523eb69e393f"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "glm::@ce54d98d7b326a3e12a8"
+		}
+	],
+	"id" : "Halib::@46b9bdfd3d1d59dc2640",
+	"name" : "Halib",
+	"nameOnDisk" : "libHalib.a",
+	"paths" : 
+	{
+		"build" : "_deps/halib-build",
+		"source" : "out/build/x64-Debug/_deps/halib-src"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "out/build/x64-Debug/_deps/halib-src/external/libbmpread/libbmpread/bmpread.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "out/build/x64-Debug/_deps/halib-src/source/Graphic/Image.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "out/build/x64-Debug/_deps/halib-src/source/Graphic/Color.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "out/build/x64-Debug/_deps/halib-src/source/System.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "out/build/x64-Debug/_deps/halib-src/source/Graphic/Render.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "out/build/x64-Debug/_deps/halib-src/source/Graphic/Sprite.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "out/build/x64-Debug/_deps/halib-src/source/Math/Rectangle.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "out/build/x64-Debug/_deps/halib-src/source/Entity.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "out/build/x64-Debug/_deps/halib-src/source/Graphic/Rendersystem.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "out/build/x64-Debug/_deps/halib-src/source/Entitysystem.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "out/build/x64-Debug/_deps/halib-src/external/wav_reader/lib/wav_reader_methods.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "out/build/x64-Debug/_deps/halib-src/source/Audio/Audio.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "out/build/x64-Debug/_deps/halib-src/source/Audio/Audiosystem.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

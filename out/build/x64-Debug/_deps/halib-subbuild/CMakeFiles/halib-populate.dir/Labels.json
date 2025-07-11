@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-subbuild/CMakeFiles/halib-populate"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-subbuild/CMakeFiles/halib-populate.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-subbuild/CMakeFiles/halib-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-subbuild/halib-populate-prefix/src/halib-populate-stamp/halib-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-subbuild/halib-populate-prefix/src/halib-populate-stamp/halib-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-subbuild/halib-populate-prefix/src/halib-populate-stamp/halib-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-subbuild/halib-populate-prefix/src/halib-populate-stamp/halib-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-subbuild/halib-populate-prefix/src/halib-populate-stamp/halib-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-subbuild/halib-populate-prefix/src/halib-populate-stamp/halib-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-subbuild/halib-populate-prefix/src/halib-populate-stamp/halib-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/s404510/Documents/GitHub/wuehansGameJam/out/build/x64-Debug/_deps/halib-subbuild/halib-populate-prefix/src/halib-populate-stamp/halib-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"halib-populate"
+		],
+		"name" : "halib-populate"
+	}
+}
