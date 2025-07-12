@@ -6,51 +6,55 @@ using namespace Halib;
 
 Kicker::Kicker(Halib::Vec3 position, Halib::Button button) : Entity(Sprite(GRAPHIC_PATH, VecI2(1, 1)), position) {
 	SetPosition(position - sprite.GetFrameSize().x * 0.5f);
-	buttonToUse = button;
+	
 }
 
 void Kicker::Update(float deltaTime) {
 	
-	if (!isOnCooldown && Halib::GetButtonDown(0, buttonToUse)) {
-		
-		isPressed = true;
-		isOnCooldown = true;
-
+	
+	if (isOnCooldown) coolDownTimer += deltaTime;
+	if (coolDownTimer >= coolDown) {
+		isOnCooldown = false;
+		coolDownTimer = 0.0f;
 	}
-	if (isPressed) {
+	
+}
+void Kicker::PutOnCooldown() {
+	isOnCooldown = true;
+}
 
-		if (hasBeenPressedTimer >= leeWayTime) {
-			isPressed = false;
-			hasBeenPressedTimer = 0.0f;
-			
-		}
-		else hasBeenPressedTimer += deltaTime;
-	}
 
-	if (isOnCooldown) {
+std::pair<bool,float> Kicker::CanReflectBall(Directions kickerDir, float boundValue, Vec2 ballPos) {
+	
+	
+	
+	float distance = 100000;
+	bool canReflect = false;
 
-		if (coolDownTimer >= coolDown) {
-			isOnCooldown = false;
-			coolDownTimer = 0.0f;
+	switch (kickerDir) {
+	case top:
+		distance = abs(ballPos.y - boundValue);
+		break;
+	
+	case right:
+		distance = abs(ballPos.x - boundValue);
+		break;
 
-		}
-		else coolDownTimer += deltaTime;	
+	case bottom:
+		distance = abs(ballPos.y - boundValue);
+		break;
+	case left:
+		distance = abs(ballPos.x - boundValue);
+		break;
+
 	}
 
 	
-}
-bool Kicker::HasBeenPressedInTime() {
-	return isPressed;
-}
-float Kicker::GetPerfectTimingFactor() {
-	if (hasBeenPressedTimer == 0) return 0.1;
-	else return leeWayTime / hasBeenPressedTimer;
+	float distancefactor = 1.0f - distance / allowedDistance;
+	bool isInRange = false;
+	if (distance <= allowedDistance && !isOnCooldown) isInRange = true;
+	std::pair<bool, float> myPair(isInRange, distancefactor);
+
+	return myPair;
 	
-}
-void Kicker::ResetPress() {
-	hasBeenPressedTimer = 0.0f;
-	isPressed = false;
-}
-bool Kicker::CanReflectBall(Bounds::Directions) {
-	return true;
 }

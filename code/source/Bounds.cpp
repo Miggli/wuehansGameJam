@@ -2,6 +2,8 @@
 #include "Halib/Graphic.h"
 #include "Halib/System.h"
 #include "Halib/Audio.h"
+#include "Kicker.h"
+
 #include <iostream>
 #include <cmath>
 
@@ -26,41 +28,54 @@ Bounds::Bounds(std::shared_ptr<Ball> ball) : Halib::Entity(Sprite(GRAPHIC_PATH, 
 }
 void Bounds::Update(float deltaTime) {
 
-	Vec2 currentBallDir = myball->GetDirection();
-	float ballWidth = myball->sprite.GetFrameSize().x * 0.5f;
-	Vec2 newBallDir;
-	if (myball->GetMiddlePoint().x < minX + ballWidth) {
-		if (kickers[3]->HasBeenPressedInTime()) {
-			BounceBall(Directions::left);
-			kickers[3]->ResetPress();
-		}
-		else if (myball->GetMiddlePoint().x < minX) myball->Active = false;
+	
+	if (!isBallInBounds()) {
+		myball->Active = false;
 	}
-	if (myball->GetMiddlePoint().x > maxX - ballWidth) {
-		
-		if (kickers[1]->HasBeenPressedInTime()) {
-			BounceBall(Directions::right);
-			kickers[1]->ResetPress();
+
+	HandleInputs();
+	
+}
+void Bounds::HandleInputs() {
+
+	if (GetButtonPressed(0, UP)) {
+		std::pair<bool, float> canBeReflected = kickers[0]->CanReflectBall(Directions::top, minY, myball->GetMiddlePoint());
+		if (canBeReflected.first) {
+			BounceBall(Directions::top,canBeReflected.second);
+			kickers[0]->PutOnCooldown();
 		}
-		else if (myball->GetMiddlePoint().x > maxX) myball->Active = false;
 	}
-	if (myball->GetMiddlePoint().y < minY + ballWidth) {
+	if (GetButtonPressed(0, RIGHT)) {
+		std::pair<bool, float> canBeReflected = kickers[1]->CanReflectBall(Directions::right, maxX, myball->GetMiddlePoint());
 		
-		if (kickers[0]->HasBeenPressedInTime()) {
-			BounceBall(Directions::top);
-			kickers[0]->ResetPress();
+		if (canBeReflected.first) {
+			BounceBall(Directions::right, canBeReflected.second);
+			kickers[1]->PutOnCooldown();
 		}
-		else if (myball->GetMiddlePoint().y < minY) myball->Active = false;
-	}
-	if (myball->GetMiddlePoint().y > maxY - ballWidth) {
-		
-		if (kickers[2]->HasBeenPressedInTime()) {
-			BounceBall(Directions::bottom);
-			kickers[2]->ResetPress();
-		}
-		else if (myball->GetMiddlePoint().y > maxY) myball->Active = false;
 	}
 	
+	if (GetButtonPressed(0, DOWN)) {
+		std::pair<bool, float> canBeReflected = kickers[2]->CanReflectBall(Directions::bottom, maxY, myball->GetMiddlePoint());
+		if (canBeReflected.first) {
+			BounceBall(Directions::bottom, canBeReflected.second);
+			kickers[2]->PutOnCooldown();
+		}
+	}
+	if (GetButtonPressed(0, LEFT)) {
+		std::pair<bool, float> canBeReflected = kickers[3]->CanReflectBall(Directions::left, minX, myball->GetMiddlePoint());
+		if (canBeReflected.first) {
+			BounceBall(Directions::left,canBeReflected.second);
+			kickers[3]->PutOnCooldown();
+		}
+	}
+}
+bool Bounds::isBallInBounds() {
+	Vec2 point = myball->GetMiddlePoint();
+	if (point.y < minY) return false;
+	if (point.x > maxX) return false;
+	if (point.y > maxY) return false;
+	if (point.x < minX) return false;
+	return true;
 }
 
 void Bounds::SetBallDirectionAndIncreaseSpeed(Vec2 newDir) {
@@ -71,46 +86,45 @@ void Bounds::SetBallDirectionAndIncreaseSpeed(Vec2 newDir) {
 	Halib::audiosystem.Play(audio);
 }
 
-void Bounds::BounceBall(Directions dir){
+void Bounds::BounceBall(Directions dir, float distanceFactor){
+
+	std::cout << "distancefactor: " << distanceFactor << std::endl;
 	if (myball->Active == false) return;
 
 	Vec2 newBallDir = myball->GetDirection();
-	Vec3 newBallPos = Vec3(0.0f, 0.0f, 0.0f);
+	
 	float offset = myball->sprite.GetFrameSize().x * 0.5f + 1.0f;
-	float timingFactor = 1.0f;
+	
+	//TODO: FIX DISTANCE FACTOR!
 	switch (dir) {
 
 		case top:
-			timingFactor = kickers[0]->GetPerfectTimingFactor();
+			
 			newBallDir.y = abs(newBallDir.y);
-			newBallDir.x = newBallDir.x * 0.5f * timingFactor;
-			newBallPos = Vec3(Vec3(myball->GetPosition().x, minY + 1, myball->GetPosition().z));
-				break;
+			newBallDir.x = newBallDir.x *  distanceFactor;
+			break;
 
 		case bottom:
-			timingFactor = kickers[2]->GetPerfectTimingFactor();
+			
 			newBallDir.y = -1 * abs(newBallDir.y);
-			newBallDir.x = newBallDir.x * 0.5f * timingFactor;
-			newBallPos = Vec3(myball->GetPosition().x, maxY - offset, myball->GetPosition().z);
-
+			newBallDir.x = newBallDir.x * distanceFactor;
+			
 			break;
 
 		case left:
-			timingFactor = kickers[3]->GetPerfectTimingFactor();
+			
 			newBallDir.x = abs(newBallDir.x);
-			newBallDir.y = newBallDir.y * timingFactor;
-			newBallPos = Vec3(minX + 1, myball->GetPosition().y, myball->GetPosition().z);
+			newBallDir.y = newBallDir.y * distanceFactor;
 			break;
 
 		case right:
-			timingFactor = kickers[1]->GetPerfectTimingFactor();
+			
 			newBallDir.x = -1 * abs(newBallDir.x);
-			newBallDir.y = newBallDir.y * 0.5f * timingFactor;
-			newBallPos = Vec3(maxX - offset, myball->GetPosition().y, myball->GetPosition().z);
+			newBallDir.y = newBallDir.y *  distanceFactor;
 			break;
 	}
 	SetBallDirectionAndIncreaseSpeed(newBallDir);
-	myball->SetPosition(newBallPos);
+	
 
 }
 
