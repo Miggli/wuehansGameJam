@@ -11,3 +11,6 @@ build/wueHans/*
 !build/Desktop
 build/Desktop/*
 !build/Desktop/dummy.txt
+out/build/x64-Debug/_deps/glm-src/
+out/build/x64-Debug/_deps/halib-src/
+out/build/x64-Debug/_deps/hall-src/

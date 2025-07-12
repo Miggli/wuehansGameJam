@@ -3,6 +3,8 @@
 #include "Halib/Entity.h"
 #include <Ball.h>
 #include "Halib/Audio.h"
+#include "Kicker.h"
+#include <array>
 struct Bounds : public Halib::Entity
 {
 	static inline const char* const GRAPHIC_PATH = "assets/bounds.bmp";
@@ -21,4 +23,19 @@ private:
 	int minX;
 
 	void SetBallDirectionAndIncreaseSpeed(Halib::Vec2 newDir);
+
+	enum Directions {
+		top,
+		bottom,
+		left,
+		right
+	};
+	void BounceBall(Directions dir);
+
+	std::array<std::shared_ptr<Kicker>, 4> kickers;
+	std::array<std::shared_ptr<Kicker>, 4> CreateKickers();
+	//0 - Top Kicker
+	//1 - Right Kicker
+	//2 - Bottom Kicker
+	//3 - Left Kicker
 };

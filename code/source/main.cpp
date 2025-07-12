@@ -10,13 +10,9 @@ int main()
 {
 	Halib::Init();
 
-#ifdef DESKTOP
-	srand(time(NULL));
-#endif
 	//Create a player and add it to the system.
 	//Entities will only be updated and drawn, when they have been added via AddEntity(...)
-	std::shared_ptr<Character> player = std::make_shared<Character>(50.0f);
-	Halib::AddEntity(player);
+	
 
 	std::shared_ptr<Ball> ball = std::make_shared<Ball>();
 	Halib::AddEntity(ball);
@@ -26,7 +22,7 @@ int main()
 	
 	
 	//We have 5 Bits per color channel, so 31 is the max value
-	Halib::rendersystem.backgroundColor = Halib::Color(23, 25, 24);
+	Halib::rendersystem.backgroundColor = Halib::Color(0, 0, 0);
 	while(!Halib::GetShouldClose()) 
 	{
 		

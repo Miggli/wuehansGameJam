@@ -11,13 +11,14 @@ Ball::Ball() : Entity(Sprite(GRAPHIC_PATH, VecI2(1, 1)), Vec3(200, 120, 0)){
 }
 
 void Ball::Update(float deltaTime) {
-	AddPosition(Halib::Vec3(direction.x, direction.y,0.0f) * deltaTime * speed);
+	
+	if (Active) AddPosition(Halib::Vec3(direction.x, direction.y,0.0f) * deltaTime * speed);
 
 }
 
 Halib::Vec2 Ball::CalculateRandomDir() {
 	
-
+	/*
 	int randomValueX = (rand() % 101);
 	randomValueX -= 50;
 	float randomFloatX = (float)randomValueX / 100.0f;
@@ -33,6 +34,9 @@ Halib::Vec2 Ball::CalculateRandomDir() {
 	
 	
 	return vector;
+	*/
+	if (direction.x == 0 && direction.y == 0) return Vec2(0.3f, 0.5f);
+	return direction;
 }
 
 Halib::Vec2 Ball::GetMiddlePoint() {
@@ -46,11 +50,18 @@ Halib::Vec2 Ball::GetDirection() {
 }
 
 void Ball::SetDirection(Halib::Vec2 dir) {
+	/*Vec2 newDir = dir;
+	{
+		//without normalizing
+		if (dir.x == 0 && dir.y == 0) direction = newDir;
+		return;
+	}*/
 	direction = Halib::Normalize(dir);
+	
 }
 
 void Ball::IncreaseSpeed(float increase) {
-	float maxSpeed = 200.0f;
+	float maxSpeed = 1500.0f;
 	float newSpeed;
 	newSpeed = speed + increase;
 	if (newSpeed >= maxSpeed) newSpeed = maxSpeed;

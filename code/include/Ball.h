@@ -22,4 +22,6 @@ public:
 	void SetDirection(Halib::Vec2 dir);
 	void IncreaseSpeed(float increase = 2.0f);
 	float GetSpeed();
+
+	bool Active = true;
 };

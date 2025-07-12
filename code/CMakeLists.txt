@@ -70,6 +70,7 @@ target_sources(${FINAL_TARGET} PUBLIC
   "source/Character.cpp"
   "source/Ball.cpp"
   "source/Bounds.cpp"
+  "source/Kicker.cpp"
 )
 
 # This is stuff for debugging the hardware. Just ignore it :)
