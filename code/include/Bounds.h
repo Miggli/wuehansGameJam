@@ -1,5 +1,6 @@
 #pragma once
-
+#ifndef test2
+#define test2
 #include "Halib/Entity.h"
 #include <Ball.h>
 #include "Halib/Audio.h"
@@ -14,6 +15,13 @@ struct Bounds : public Halib::Entity
 	Bounds(std::shared_ptr<Ball> ball);
 	
 	void Update(float deltaTime) override;
+
+	enum Directions {
+		top,
+		bottom,
+		left,
+		right
+	};
 	
 private: 
 	std::shared_ptr<Ball> myball;
@@ -24,12 +32,7 @@ private:
 
 	void SetBallDirectionAndIncreaseSpeed(Halib::Vec2 newDir);
 
-	enum Directions {
-		top,
-		bottom,
-		left,
-		right
-	};
+	
 	void BounceBall(Directions dir);
 
 	std::array<std::shared_ptr<Kicker>, 4> kickers;
@@ -39,3 +42,4 @@ private:
 	//2 - Bottom Kicker
 	//3 - Left Kicker
 };
+#endif

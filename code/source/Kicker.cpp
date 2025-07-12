@@ -51,3 +51,6 @@ void Kicker::ResetPress() {
 	hasBeenPressedTimer = 0.0f;
 	isPressed = false;
 }
+bool Kicker::CanReflectBall(Bounds::Directions) {
+	return true;
+}
