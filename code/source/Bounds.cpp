@@ -74,7 +74,7 @@ void Bounds::HandleInputs() {
 		}
 
 	}
-	if (GetButtonPressed(0, RIGHT)) {
+	if (GetButtonPressed(1, RIGHT)) {
 		std::pair<bool, float> canBeReflected = kickers[1]->CanReflectBall(Directions::right, maxX, myball->GetPosition() + Vec3(myball->sprite.GetFrameSize().x,0,0));
 		
 		if (canBeReflected.first) {
@@ -87,7 +87,7 @@ void Bounds::HandleInputs() {
 		}
 	}
 	
-	if (GetButtonPressed(0, DOWN)) {
+	if (GetButtonPressed(1, DOWN)) {
 		std::pair<bool, float> canBeReflected = kickers[2]->CanReflectBall(Directions::bottom, maxY, myball->GetPosition() + Vec3(0, myball->sprite.GetFrameSize().y, 0));
 		if (canBeReflected.first) {
 			BounceBall(Directions::bottom, canBeReflected.second);
