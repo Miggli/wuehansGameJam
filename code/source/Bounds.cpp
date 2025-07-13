@@ -23,6 +23,9 @@ Bounds::Bounds(std::shared_ptr<Ball> ball) : Halib::Entity(Sprite(GRAPHIC_PATH, 
 	hitaudio = Halib::audiosystem.LoudSound(AUDIOHIT_PATH);
 	playeroneaudio = Halib::audiosystem.LoudSound(PLAYERONEAUDIO_PATH);
 	playertwoaudio = Halib::audiosystem.LoudSound(PLAYERTWOAUDIO_PATH);
+	perfecthitaudio = Halib::audiosystem.LoudSound(PERFECTHITAUDIO_PATH);
+
+	hitSoundToPlay = hitaudio;
 	kickers = CreateKickers();
 
 }
@@ -30,7 +33,7 @@ void Bounds::Update(float deltaTime) {
 
 	
 	if (!isBallInBounds()) {
-		myball->Active = false;
+		myball->DisableBallWithGracePeriod();
 	}
 
 	HandleInputs();
@@ -57,7 +60,7 @@ void Bounds::HandleInputs() {
 		
 		if (canBeReflected.first) {
 			BounceBall(Directions::right, canBeReflected.second);
-			kickers[1]->PutOnCooldown();
+			;
 		}
 		if (!kickers[1]->IsOnCooldown()) {
 			kickers[1]->PutOnCooldown();
@@ -102,47 +105,56 @@ void Bounds::SetBallDirectionAndIncreaseSpeed(Vec2 newDir) {
 
 	myball->IncreaseSpeed(10.0f);
 
-	Halib::audiosystem.Play(hitaudio);
+	Halib::audiosystem.Play(hitSoundToPlay);
 }
 
 void Bounds::BounceBall(Directions dir, float distanceFactor){
 
 	std::cout << "distancefactor: " << distanceFactor << std::endl;
+	if (distanceFactor == 0) distanceFactor = 0.1f;
 	if (myball->Active == false) return;
 
 	Vec2 newBallDir = myball->GetDirection();
 	Vec2 ballDirSign = GetBallDirSign(newBallDir);
-	float offset = myball->sprite.GetFrameSize().x * 0.5f + 1.0f;
 	
-	//TODO: FIX DISTANCE FACTOR!
+	
+	Vec3 newBallPos = myball->GetPosition();
 	switch (dir) {
 
 		case top:
 			
-			newBallDir.y = abs(newBallDir.y) * 0.5f;
+			newBallDir.y = abs(newBallDir.y) * 0.5f * 1 / distanceFactor;
 			newBallDir.x = ballDirSign.x * distanceFactor;
+			if (myball->GetMiddlePoint().y <= minY) newBallPos.y = minY + (myball->sprite.GetFrameSize().y * 0.5f + 1);
 			break;
 
 		case bottom:
 			
-			newBallDir.y = -1 * abs(newBallDir.y) * 0.5f;
+			newBallDir.y = -1 * abs(newBallDir.y) * 0.5f * 1/distanceFactor;
 			newBallDir.x = ballDirSign.x * distanceFactor;
+			if (myball->GetMiddlePoint().y >= maxY) newBallPos.y = maxY - (myball->sprite.GetFrameSize().y * 0.5f + 1);
 			
 			break;
 
 		case left:
 			
-			newBallDir.x = abs(newBallDir.x) * 0.5f;
+			newBallDir.x = abs(newBallDir.x) * 0.5f * 1 / distanceFactor;
 			newBallDir.y = ballDirSign.y * distanceFactor;
+			if (myball->GetMiddlePoint().x >= maxX) newBallPos.x = minX + (myball->sprite.GetFrameSize().x * 0.5f + 1);
 			break;
 
 		case right:
 			
-			newBallDir.x = -1 * abs(newBallDir.x) * 0.5f;
+			newBallDir.x = -1 * abs(newBallDir.x) * 0.5f * 1 / distanceFactor;;
 			newBallDir.y = ballDirSign.y * distanceFactor;
+			if (myball-> GetMiddlePoint().x >= maxX) newBallPos.x = maxX - (myball->sprite.GetFrameSize().x * 0.5f + 1);
 			break;
 	}
+	if (distanceFactor >= 0.8) hitSoundToPlay = perfecthitaudio;
+	else hitSoundToPlay = hitaudio;
+	myball->SetPosition(newBallPos);
 	SetBallDirectionAndIncreaseSpeed(newBallDir);
+	myball->ResetGracePeriod();
 	
 
 }

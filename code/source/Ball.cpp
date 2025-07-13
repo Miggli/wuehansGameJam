@@ -12,7 +12,8 @@ Ball::Ball() : Entity(Sprite(GRAPHIC_PATH, VecI2(1, 1)), Vec3(200, 120, 0)){
 
 void Ball::Update(float deltaTime) {
 	
-	if (Active) AddPosition(Halib::Vec3(direction.x, direction.y,0.0f) * deltaTime * speed);
+	if (!Active) return;
+	if (shouldMove) AddPosition(Halib::Vec3(direction.x, direction.y,0.0f) * deltaTime * speed);
 
 	if (isInGracePeriod) HandleGracePeriod();
 }
@@ -41,7 +42,13 @@ Halib::Vec2 Ball::CalculateRandomDir() {
 }
 
 void Ball::DisableBallWithGracePeriod() {
+	shouldMove = false;
 	isInGracePeriod = true;
+}
+void Ball::ResetGracePeriod() {
+	isInGracePeriod = false;
+	shouldMove = true;
+	graceTimer = 0.0f;
 }
 
 void Ball::HandleGracePeriod() {
@@ -49,6 +56,7 @@ void Ball::HandleGracePeriod() {
 		isInGracePeriod = false;
 		Active = false;
 		graceTimer = 0.0f;
+
 	}
 
 	graceTimer += GetDeltaTime();
@@ -72,6 +80,7 @@ void Ball::SetDirection(Halib::Vec2 dir) {
 		return;
 	}*/
 	direction = Halib::Normalize(dir);
+	shouldMove = true;
 	
 }
 

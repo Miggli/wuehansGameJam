@@ -19,7 +19,7 @@ public:
 	
 private:
 	
-	int allowedDistance = 15;
+	int allowedDistance = 10;
 	static inline const char* const GRAPHIC_PATH = "assets/Ball.bmp";
 	
 

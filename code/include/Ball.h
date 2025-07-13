@@ -16,10 +16,12 @@ private:
 	float speed = 50.0f;
 
 	bool isInGracePeriod = false;
-	float gracePeriodTime = 1.0f;
+	float gracePeriodTime = 0.2f;
 	float graceTimer = 0.0f;
 
 	void HandleGracePeriod();
+
+	bool shouldMove = true;
 
 public:
 	
@@ -28,7 +30,7 @@ public:
 	void SetDirection(Halib::Vec2 dir);
 	void IncreaseSpeed(float increase = 2.0f);
 	void DisableBallWithGracePeriod();
-
+	void ResetGracePeriod();
 	float GetSpeed();
 
 	bool Active = true;
