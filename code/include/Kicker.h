@@ -19,8 +19,8 @@ public:
 	
 private:
 	
-	int allowedDistance = 10;
-	static inline const char* const GRAPHIC_PATH = "assets/Ball.bmp";
+	int allowedDistance = 12;
+	static inline const char* const GRAPHIC_PATH = "assets/kickers.bmp";
 	
 
 	float coolDownTimer = 0.0f;

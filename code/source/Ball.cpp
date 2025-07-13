@@ -8,12 +8,13 @@ using namespace Halib;
 Ball::Ball() : Entity(Sprite(GRAPHIC_PATH, VecI2(1, 1)), Vec3(200, 120, 0)){
 	
 	direction = CalculateRandomDir();
+	failsound = Halib::audiosystem.LoudSound(FAILSOUND_PATH);
 }
 
 void Ball::Update(float deltaTime) {
 	
 	if (!Active) return;
-	if (shouldMove) AddPosition(Halib::Vec3(direction.x, direction.y,0.0f) * deltaTime * speed);
+	if (shouldMove) AddPosition(Halib::Vec3(direction.x, direction.y,0.0f) * deltaTime * speed * speedModifier);
 
 	if (isInGracePeriod) HandleGracePeriod();
 }
@@ -56,16 +57,20 @@ void Ball::HandleGracePeriod() {
 		isInGracePeriod = false;
 		Active = false;
 		graceTimer = 0.0f;
+		PlayFailSound();
 
 	}
 
 	graceTimer += GetDeltaTime();
 }
+void Ball::PlayFailSound() {
+	Halib::audiosystem.Play(failsound);
+}
 
 Halib::Vec2 Ball::GetMiddlePoint() {
 
 
-	return Vec2(GetPosition()) + Vec2(sprite.GetFrameSize()) * 0.5f;
+	return (Vec2(GetPosition()) + 0.5f* Vec2(sprite.GetFrameSize()));
 }
 
 Halib::Vec2 Ball::GetDirection() {

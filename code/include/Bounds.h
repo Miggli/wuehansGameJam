@@ -13,7 +13,7 @@ struct Bounds : public Halib::Entity
 
 public:
 	static inline const char* const GRAPHIC_PATH = "assets/bounds.bmp";
-	static inline const char* const AUDIOHIT_PATH = "assets/hitHurt.wav";
+	static inline const char* const AUDIOHIT_PATH = "assets/normalhit.wav";
 	static inline const char* const PERFECTHITAUDIO_PATH = "assets/perfecthit.wav";
 
 	static inline const char* const PLAYERONEAUDIO_PATH = "assets/clicktop.wav";
@@ -43,7 +43,7 @@ private:
 	void HandleInputs();
 	bool isBallInBounds();
 
-	void SetBallDirectionAndIncreaseSpeed(Halib::Vec2 newDir);
+	void SetBallDirection(Halib::Vec2 newDir);
 
 	
 	void BounceBall(Directions dir, float distanceFactor);

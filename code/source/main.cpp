@@ -19,10 +19,11 @@ int main()
 	std::shared_ptr<Bounds> bounds = std::make_shared<Bounds>(ball);
 	Halib::AddEntity(bounds);
 	
-	
-	
+	int r = 148;
+	int g = 148;
+	int b = 156;
 	//We have 5 Bits per color channel, so 31 is the max value
-	Halib::rendersystem.backgroundColor = Halib::Color(0, 0, 0);
+	Halib::rendersystem.backgroundColor = Halib::Color(r/255.0f * 31.0f, g / 255.0f * 31.0f, b / 255.0f * 31.0f);
 	while(!Halib::GetShouldClose()) 
 	{
 		

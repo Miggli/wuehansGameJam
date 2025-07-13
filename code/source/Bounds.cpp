@@ -14,7 +14,7 @@ Bounds::Bounds(std::shared_ptr<Ball> ball) : Halib::Entity(Sprite(GRAPHIC_PATH, 
 	
 	SetPosition(GetPosition() - 0.5f * Halib::Vec3(sprite.GetFrameSize(), 0));
 
-	int wallWidth = 12;
+	int wallWidth = 14;
 	minY = GetPosition().y + wallWidth;
 	maxY = GetPosition().y + sprite.GetFrameSize().y - wallWidth;
 	minX = GetPosition().x + wallWidth;
@@ -34,6 +34,7 @@ void Bounds::Update(float deltaTime) {
 	
 	if (!isBallInBounds()) {
 		myball->DisableBallWithGracePeriod();
+		
 	}
 
 	HandleInputs();
@@ -44,7 +45,7 @@ void Bounds::HandleInputs() {
 	if (GetButtonPressed(0, UP)) {
 
 		
-		std::pair<bool, float> canBeReflected = kickers[0]->CanReflectBall(Directions::top, minY, myball->GetMiddlePoint());
+		std::pair<bool, float> canBeReflected = kickers[0]->CanReflectBall(Directions::top, minY, myball->GetPosition());
 		if (canBeReflected.first) {
 			BounceBall(Directions::top,canBeReflected.second);
 			
@@ -56,11 +57,11 @@ void Bounds::HandleInputs() {
 
 	}
 	if (GetButtonPressed(0, RIGHT)) {
-		std::pair<bool, float> canBeReflected = kickers[1]->CanReflectBall(Directions::right, maxX, myball->GetMiddlePoint());
+		std::pair<bool, float> canBeReflected = kickers[1]->CanReflectBall(Directions::right, maxX, myball->GetPosition() + Vec3(myball->sprite.GetFrameSize().x,0,0));
 		
 		if (canBeReflected.first) {
 			BounceBall(Directions::right, canBeReflected.second);
-			;
+			
 		}
 		if (!kickers[1]->IsOnCooldown()) {
 			kickers[1]->PutOnCooldown();
@@ -69,18 +70,19 @@ void Bounds::HandleInputs() {
 	}
 	
 	if (GetButtonPressed(0, DOWN)) {
-		std::pair<bool, float> canBeReflected = kickers[2]->CanReflectBall(Directions::bottom, maxY, myball->GetMiddlePoint());
+		std::pair<bool, float> canBeReflected = kickers[2]->CanReflectBall(Directions::bottom, maxY, myball->GetPosition() + Vec3(0, myball->sprite.GetFrameSize().y, 0));
 		if (canBeReflected.first) {
 			BounceBall(Directions::bottom, canBeReflected.second);
 			
 		}
 		if (!kickers[2]->IsOnCooldown()) {
 			kickers[2]->PutOnCooldown();
+			kickers[2]->sprite.frameIndex = VecI2(1,1);
 			Halib::audiosystem.Play(playeroneaudio);
 		}
 	}
 	if (GetButtonPressed(0, LEFT)) {
-		std::pair<bool, float> canBeReflected = kickers[3]->CanReflectBall(Directions::left, minX, myball->GetMiddlePoint());
+		std::pair<bool, float> canBeReflected = kickers[3]->CanReflectBall(Directions::left, minX, myball->GetPosition());
 		if (canBeReflected.first) {
 			BounceBall(Directions::left,canBeReflected.second);
 			
@@ -93,17 +95,30 @@ void Bounds::HandleInputs() {
 }
 bool Bounds::isBallInBounds() {
 	Vec2 point = myball->GetMiddlePoint();
-	if (point.y < minY) return false;
-	if (point.x > maxX) return false;
-	if (point.y > maxY) return false;
-	if (point.x < minX) return false;
+	if (point.y < minY) 
+	{
+		myball->SetPosition(Vec3(myball->GetPosition().x, minY, myball->GetPosition().z));
+		return false;
+	}
+
+	if (point.x > maxX) {
+		myball->SetPosition(Vec3(maxX - (myball->sprite.GetFrameSize().x), myball->GetPosition().y, myball->GetPosition().z));
+		return false;
+	}
+	if (point.y > maxY) {
+		myball->SetPosition(Vec3(myball->GetPosition().x, maxY - (myball->sprite.GetFrameSize().y ), myball->GetPosition().z));
+		return false;
+	}
+	if (point.x < minX) {
+		myball->SetPosition(Vec3(minX, myball->GetPosition().y, myball->GetPosition().z));
+		return false;
+	}
 	return true;
 }
 
-void Bounds::SetBallDirectionAndIncreaseSpeed(Vec2 newDir) {
+void Bounds::SetBallDirection(Vec2 newDir) {
 	myball->SetDirection(newDir);
 
-	myball->IncreaseSpeed(10.0f);
 
 	Halib::audiosystem.Play(hitSoundToPlay);
 }
@@ -125,14 +140,14 @@ void Bounds::BounceBall(Directions dir, float distanceFactor){
 			
 			newBallDir.y = abs(newBallDir.y) * 0.5f * 1 / distanceFactor;
 			newBallDir.x = ballDirSign.x * distanceFactor;
-			if (myball->GetMiddlePoint().y <= minY) newBallPos.y = minY + (myball->sprite.GetFrameSize().y * 0.5f + 1);
+			if (myball->GetMiddlePoint().y <= minY) newBallPos.y = minY +1;
 			break;
 
 		case bottom:
 			
 			newBallDir.y = -1 * abs(newBallDir.y) * 0.5f * 1/distanceFactor;
 			newBallDir.x = ballDirSign.x * distanceFactor;
-			if (myball->GetMiddlePoint().y >= maxY) newBallPos.y = maxY - (myball->sprite.GetFrameSize().y * 0.5f + 1);
+			if (myball->GetMiddlePoint().y >= maxY) newBallPos.y = maxY - 1 - myball->sprite.GetFrameSize().y;
 			
 			break;
 
@@ -140,20 +155,30 @@ void Bounds::BounceBall(Directions dir, float distanceFactor){
 			
 			newBallDir.x = abs(newBallDir.x) * 0.5f * 1 / distanceFactor;
 			newBallDir.y = ballDirSign.y * distanceFactor;
-			if (myball->GetMiddlePoint().x >= maxX) newBallPos.x = minX + (myball->sprite.GetFrameSize().x * 0.5f + 1);
+			if (myball->GetMiddlePoint().x >= minX) newBallPos.x = minX + 1;
 			break;
 
 		case right:
 			
 			newBallDir.x = -1 * abs(newBallDir.x) * 0.5f * 1 / distanceFactor;;
 			newBallDir.y = ballDirSign.y * distanceFactor;
-			if (myball-> GetMiddlePoint().x >= maxX) newBallPos.x = maxX - (myball->sprite.GetFrameSize().x * 0.5f + 1);
+			if (myball-> GetMiddlePoint().x >= maxX) newBallPos.x = maxX - 1 - myball->sprite.GetFrameSize().x;
 			break;
 	}
-	if (distanceFactor >= 0.8) hitSoundToPlay = perfecthitaudio;
-	else hitSoundToPlay = hitaudio;
+	float speedMod;
+	if (distanceFactor >= 0.93) {
+		hitSoundToPlay = perfecthitaudio;
+		speedMod = 1.6f;
+	}
+	else {
+		hitSoundToPlay = hitaudio;
+		speedMod = 1.0f;
+	}
 	myball->SetPosition(newBallPos);
-	SetBallDirectionAndIncreaseSpeed(newBallDir);
+	SetBallDirection(newBallDir);
+
+	myball->IncreaseSpeed(4.0f);
+	myball->speedModifier = speedMod;
 	myball->ResetGracePeriod();
 	
 
@@ -168,10 +193,17 @@ Vec2 Bounds::GetBallDirSign(Vec2 ballDir) {
 
 std::array<std::shared_ptr<Kicker>, 4> Bounds::CreateKickers() {
 	std::array<std::shared_ptr<Kicker>, 4> localKickers;
-	localKickers[0] = std::make_shared<Kicker>(Vec3(200.0f, minY, 0.0f), Halib::UP);
-	localKickers[1] = std::make_shared<Kicker>(Vec3(maxX, 120.0f, 0.0f), Halib::RIGHT);
-	localKickers[2] = std::make_shared<Kicker>(Vec3(200.0f, maxY, 0.0f), Halib::DOWN);
-	localKickers[3] = std::make_shared<Kicker>(Vec3(minX, 120.0f, 0.0f), Halib::LEFT);
+	localKickers[0] = std::make_shared<Kicker>(Vec3(200, 120, -1), Halib::UP);
+	
+	localKickers[1] = std::make_shared<Kicker>(Vec3(200, 120, -1), Halib::RIGHT);
+	localKickers[1]->sprite.frameIndex = VecI2(2, 1);
+
+	localKickers[2] = std::make_shared<Kicker>(Vec3(200, 121, -1), Halib::DOWN);
+	localKickers[2]->sprite.flipY = true;
+
+	localKickers[3] = std::make_shared<Kicker>(Vec3(200, 120, -1), Halib::LEFT);
+	localKickers[3]->sprite.frameIndex = VecI2(2, 1);
+	localKickers[3]->sprite.flipX = true;
 
 	Halib::AddEntity(localKickers[0]);
 	Halib::AddEntity(localKickers[1]);

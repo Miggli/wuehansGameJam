@@ -4,8 +4,8 @@
 #include <iostream>
 using namespace Halib;
 
-Kicker::Kicker(Halib::Vec3 position, Halib::Button button) : Entity(Sprite(GRAPHIC_PATH, VecI2(1, 1)), position) {
-	SetPosition(position - sprite.GetFrameSize().x * 0.5f);
+Kicker::Kicker(Halib::Vec3 position, Halib::Button button) : Entity(Sprite(GRAPHIC_PATH, VecI2(4, 1)), position) {
+	SetPosition(Vec3(position.x - sprite.GetFrameSize().x * 0.5f, position.y - sprite.GetFrameSize().y * 0.5f,position.z));
 	
 }
 
@@ -16,10 +16,13 @@ void Kicker::Update(float deltaTime) {
 	if (coolDownTimer >= coolDown) {
 		isOnCooldown = false;
 		coolDownTimer = 0.0f;
+		sprite.frameIndex += VecI2(-1, 0);
 	}
 	
 }
 void Kicker::PutOnCooldown() {
+
+	sprite.frameIndex += VecI2(1, 0);
 	isOnCooldown = true;
 }
 
