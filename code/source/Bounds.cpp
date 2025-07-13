@@ -87,7 +87,7 @@ void Bounds::HandleInputs() {
 		}
 	}
 	
-	if (GetButtonPressed(1, DOWN)) {
+	if (GetButtonPressed(0, DOWN)) {
 		std::pair<bool, float> canBeReflected = kickers[2]->CanReflectBall(Directions::bottom, maxY, myball->GetPosition() + Vec3(0, myball->sprite.GetFrameSize().y, 0));
 		if (canBeReflected.first) {
 			BounceBall(Directions::bottom, canBeReflected.second);
@@ -99,7 +99,7 @@ void Bounds::HandleInputs() {
 			Halib::audiosystem.Play(playeroneaudio);
 		}
 	}
-	if (GetButtonPressed(0, LEFT)) {
+	if (GetButtonPressed(1, LEFT)) {
 		std::pair<bool, float> canBeReflected = kickers[3]->CanReflectBall(Directions::left, minX, myball->GetPosition());
 		if (canBeReflected.first) {
 			BounceBall(Directions::left,canBeReflected.second);
