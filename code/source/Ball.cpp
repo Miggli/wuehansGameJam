@@ -14,6 +14,7 @@ void Ball::Update(float deltaTime) {
 	
 	if (Active) AddPosition(Halib::Vec3(direction.x, direction.y,0.0f) * deltaTime * speed);
 
+	if (isInGracePeriod) HandleGracePeriod();
 }
 
 Halib::Vec2 Ball::CalculateRandomDir() {
@@ -37,6 +38,20 @@ Halib::Vec2 Ball::CalculateRandomDir() {
 	*/
 	if (direction.x == 0 && direction.y == 0) return Vec2(0.3f, 0.5f);
 	return direction;
+}
+
+void Ball::DisableBallWithGracePeriod() {
+	isInGracePeriod = true;
+}
+
+void Ball::HandleGracePeriod() {
+	if (graceTimer >= gracePeriodTime) {
+		isInGracePeriod = false;
+		Active = false;
+		graceTimer = 0.0f;
+	}
+
+	graceTimer += GetDeltaTime();
 }
 
 Halib::Vec2 Ball::GetMiddlePoint() {

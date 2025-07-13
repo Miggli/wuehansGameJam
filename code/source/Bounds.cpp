@@ -20,9 +20,9 @@ Bounds::Bounds(std::shared_ptr<Ball> ball) : Halib::Entity(Sprite(GRAPHIC_PATH, 
 	minX = GetPosition().x + wallWidth;
 	maxX = GetPosition().x + sprite.GetFrameSize().x - wallWidth;
 
-	audio = Halib::audiosystem.LoudSound(AUDIOHIT_PATH);
-
-
+	hitaudio = Halib::audiosystem.LoudSound(AUDIOHIT_PATH);
+	playeroneaudio = Halib::audiosystem.LoudSound(PLAYERONEAUDIO_PATH);
+	playertwoaudio = Halib::audiosystem.LoudSound(PLAYERTWOAUDIO_PATH);
 	kickers = CreateKickers();
 
 }
@@ -39,11 +39,18 @@ void Bounds::Update(float deltaTime) {
 void Bounds::HandleInputs() {
 
 	if (GetButtonPressed(0, UP)) {
+
+		
 		std::pair<bool, float> canBeReflected = kickers[0]->CanReflectBall(Directions::top, minY, myball->GetMiddlePoint());
 		if (canBeReflected.first) {
 			BounceBall(Directions::top,canBeReflected.second);
-			kickers[0]->PutOnCooldown();
+			
 		}
+		if (!kickers[0]->IsOnCooldown()) {
+			kickers[0]->PutOnCooldown();
+			Halib::audiosystem.Play(playeroneaudio);
+		}
+
 	}
 	if (GetButtonPressed(0, RIGHT)) {
 		std::pair<bool, float> canBeReflected = kickers[1]->CanReflectBall(Directions::right, maxX, myball->GetMiddlePoint());
@@ -52,20 +59,32 @@ void Bounds::HandleInputs() {
 			BounceBall(Directions::right, canBeReflected.second);
 			kickers[1]->PutOnCooldown();
 		}
+		if (!kickers[1]->IsOnCooldown()) {
+			kickers[1]->PutOnCooldown();
+			Halib::audiosystem.Play(playertwoaudio);
+		}
 	}
 	
 	if (GetButtonPressed(0, DOWN)) {
 		std::pair<bool, float> canBeReflected = kickers[2]->CanReflectBall(Directions::bottom, maxY, myball->GetMiddlePoint());
 		if (canBeReflected.first) {
 			BounceBall(Directions::bottom, canBeReflected.second);
+			
+		}
+		if (!kickers[2]->IsOnCooldown()) {
 			kickers[2]->PutOnCooldown();
+			Halib::audiosystem.Play(playeroneaudio);
 		}
 	}
 	if (GetButtonPressed(0, LEFT)) {
 		std::pair<bool, float> canBeReflected = kickers[3]->CanReflectBall(Directions::left, minX, myball->GetMiddlePoint());
 		if (canBeReflected.first) {
 			BounceBall(Directions::left,canBeReflected.second);
+			
+		}
+		if (!kickers[3]->IsOnCooldown()) {
 			kickers[3]->PutOnCooldown();
+			Halib::audiosystem.Play(playertwoaudio);
 		}
 	}
 }
@@ -83,7 +102,7 @@ void Bounds::SetBallDirectionAndIncreaseSpeed(Vec2 newDir) {
 
 	myball->IncreaseSpeed(10.0f);
 
-	Halib::audiosystem.Play(audio);
+	Halib::audiosystem.Play(hitaudio);
 }
 
 void Bounds::BounceBall(Directions dir, float distanceFactor){
@@ -92,7 +111,7 @@ void Bounds::BounceBall(Directions dir, float distanceFactor){
 	if (myball->Active == false) return;
 
 	Vec2 newBallDir = myball->GetDirection();
-	
+	Vec2 ballDirSign = GetBallDirSign(newBallDir);
 	float offset = myball->sprite.GetFrameSize().x * 0.5f + 1.0f;
 	
 	//TODO: FIX DISTANCE FACTOR!
@@ -100,32 +119,39 @@ void Bounds::BounceBall(Directions dir, float distanceFactor){
 
 		case top:
 			
-			newBallDir.y = abs(newBallDir.y);
-			newBallDir.x = newBallDir.x *  distanceFactor;
+			newBallDir.y = abs(newBallDir.y) * 0.5f;
+			newBallDir.x = ballDirSign.x * distanceFactor;
 			break;
 
 		case bottom:
 			
-			newBallDir.y = -1 * abs(newBallDir.y);
-			newBallDir.x = newBallDir.x * distanceFactor;
+			newBallDir.y = -1 * abs(newBallDir.y) * 0.5f;
+			newBallDir.x = ballDirSign.x * distanceFactor;
 			
 			break;
 
 		case left:
 			
-			newBallDir.x = abs(newBallDir.x);
-			newBallDir.y = newBallDir.y * distanceFactor;
+			newBallDir.x = abs(newBallDir.x) * 0.5f;
+			newBallDir.y = ballDirSign.y * distanceFactor;
 			break;
 
 		case right:
 			
-			newBallDir.x = -1 * abs(newBallDir.x);
-			newBallDir.y = newBallDir.y *  distanceFactor;
+			newBallDir.x = -1 * abs(newBallDir.x) * 0.5f;
+			newBallDir.y = ballDirSign.y * distanceFactor;
 			break;
 	}
 	SetBallDirectionAndIncreaseSpeed(newBallDir);
 	
 
+}
+Vec2 Bounds::GetBallDirSign(Vec2 ballDir) {
+	Vec2 newVec = Vec2(1, 1);
+	if (ballDir.x < 0) newVec.x = -1;
+	if (ballDir.y < 0) newVec.y = -1;
+
+	return newVec;
 }
 
 std::array<std::shared_ptr<Kicker>, 4> Bounds::CreateKickers() {

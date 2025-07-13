@@ -23,6 +23,10 @@ void Kicker::PutOnCooldown() {
 	isOnCooldown = true;
 }
 
+bool Kicker::IsOnCooldown() {
+	return isOnCooldown;
+}
+
 
 std::pair<bool,float> Kicker::CanReflectBall(Directions kickerDir, float boundValue, Vec2 ballPos) {
 	

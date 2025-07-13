@@ -15,12 +15,20 @@ struct Ball : public Halib::Entity
 private:
 	float speed = 50.0f;
 
+	bool isInGracePeriod = false;
+	float gracePeriodTime = 1.0f;
+	float graceTimer = 0.0f;
+
+	void HandleGracePeriod();
+
 public:
 	
 	Halib::Vec2 GetMiddlePoint();
 	Halib::Vec2 GetDirection();
 	void SetDirection(Halib::Vec2 dir);
 	void IncreaseSpeed(float increase = 2.0f);
+	void DisableBallWithGracePeriod();
+
 	float GetSpeed();
 
 	bool Active = true;

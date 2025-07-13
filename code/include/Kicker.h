@@ -14,7 +14,7 @@ public:
 	// will also return a distance factor (how close the ball is to the kicker): 0=lowest ; 1 = highest
 	std::pair<bool, float> CanReflectBall(Directions kickerDir, float boundValue, Halib::Vec2 ballPos);
 	void PutOnCooldown();
-
+	bool IsOnCooldown();
 	
 	
 private:
