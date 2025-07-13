@@ -12,4 +12,5 @@ struct ScoreCounter : public Halib::Entity
 
 	void AddScoreVisual();
 
+	void ResetScore();
 };

@@ -3,6 +3,7 @@
 #include "Halib/System.h"
 #include <iostream>
 #include <cstdlib>
+#include "Bounds.h"
 using namespace Halib;
 
 Ball::Ball() : Entity(Sprite(GRAPHIC_PATH, VecI2(1, 1)), Vec3(200, 120, 0)){
@@ -59,7 +60,7 @@ void Ball::HandleGracePeriod() {
 		Active = false;
 		graceTimer = 0.0f;
 		PlayFailSound();
-
+		Bounds::BallHasDied(GetMiddlePoint());
 	}
 
 	graceTimer += GetDeltaTime();

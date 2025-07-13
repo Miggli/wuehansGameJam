@@ -32,24 +32,25 @@ public:
 	
 	void Update(float deltaTime) override;
 
-
+	static void BallHasDied(Halib::Vec2 ballMiddlePoint);
 	
 	
 private: 
 
-	int lastPlayerScored = 0;
+	inline static int lastPlayerScored = 0;
 
-	int player1Score = 0;
-	int player2Score = 0;
+	inline static int player1Score = 0;
+	inline static int player2Score = 0;
+	inline static bool gameOver = false;;
 
 	std::shared_ptr<Ball> myball;
-	int maxY;
-	int maxX;
-	int minY;
-	int minX;
+	inline static int maxY;
+	inline static int maxX;
+	inline static int minY;
+	inline static int minX;
 
-	std::shared_ptr<ScoreCounter> player1Counter;
-	std::shared_ptr<ScoreCounter> player2Counter;
+	inline static std::shared_ptr<ScoreCounter> player1Counter;
+	inline static std::shared_ptr<ScoreCounter> player2Counter;
 
 	void HandleInputs();
 	bool isBallInBounds();
@@ -67,5 +68,5 @@ private:
 	//2 - Bottom Kicker
 	//3 - Left Kicker
 
-	void PlayerScore(int controllerID);
+	static void PlayerScore(int controllerID);
 };

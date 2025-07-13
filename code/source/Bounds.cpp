@@ -50,7 +50,12 @@ void Bounds::Update(float deltaTime) {
 void Bounds::HandleInputs() {
 
 	if (!myball->Active) {
-		if (GetButtonPressed(0, START) && GetButtonPressed(0, START)) {
+		if (GetButtonPressed(lastPlayerScored, START) || GetButtonPressed(0, RIGHT_SHOULDER) || GetButtonPressed(1, RIGHT_SHOULDER)){
+			
+			if (gameOver) {
+				player1Counter->ResetScore();
+				player2Counter->ResetScore();
+			}
 			myball->ResetBall(lastPlayerScored);
 		}
 	}
@@ -111,23 +116,23 @@ bool Bounds::isBallInBounds() {
 	if (point.y < minY) 
 	{
 		myball->SetPosition(Vec3(myball->GetPosition().x, minY, myball->GetPosition().z));
-		PlayerScore(0);
+		
 		return false;
 	}
 
 	if (point.x > maxX) {
 		myball->SetPosition(Vec3(maxX - (myball->sprite.GetFrameSize().x), myball->GetPosition().y, myball->GetPosition().z));
-		PlayerScore(1);
+		
 		return false;
 	}
 	if (point.y > maxY) {
 		myball->SetPosition(Vec3(myball->GetPosition().x, maxY - (myball->sprite.GetFrameSize().y ), myball->GetPosition().z));
-		PlayerScore(0);
+		
 		return false;
 	}
 	if (point.x < minX) {
 		myball->SetPosition(Vec3(minX, myball->GetPosition().y, myball->GetPosition().z));
-		PlayerScore(1);
+		
 		return false;
 	}
 	return true;
@@ -235,13 +240,58 @@ void Bounds::PlayerScore(int controllerID) {
 		player1Score++;
 		lastPlayerScored = 0;
 		player1Counter->AddScoreVisual();
+		if (player1Score > 5) gameOver = true;
 		return;
 	}
 	else {
 		player2Score++;
 		lastPlayerScored = 1;
-		player1Counter->AddScoreVisual();
+		player2Counter->AddScoreVisual();
+		if (player2Score > 5) gameOver = true;
 		return;
+	}
+}
+
+void Bounds::BallHasDied(Vec2 ballMiddlePoint) {
+	
+	Directions closestDir = top;
+	int currentClosest = 1000;
+
+	float distance = abs(minY - ballMiddlePoint.y);
+	if (distance < currentClosest) {
+		currentClosest = distance;
+		closestDir = top;
+	}
+	distance = abs(maxX - ballMiddlePoint.x);
+	if (distance < currentClosest) {
+		currentClosest = distance;
+		closestDir = right;
+	}
+	distance = abs(maxY - ballMiddlePoint.y);
+	if (distance < currentClosest) {
+		currentClosest = distance;
+		closestDir = bottom;
+	}
+	distance = abs(minX - ballMiddlePoint.y);
+	if (distance < currentClosest) {
+		currentClosest = distance;
+		closestDir = left;
+	}
+	
+	switch (closestDir) {
+	case top:
+		PlayerScore(1);
+		break;
+	case right:
+		PlayerScore(0);
+		break;
+	case bottom:
+		PlayerScore(1);
+		break;
+	case left:
+		PlayerScore(0);
+		break;
+
 	}
 }
 

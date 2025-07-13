@@ -15,3 +15,7 @@ void ScoreCounter::Update(float deltaTime) {
 void ScoreCounter::AddScoreVisual() {
 	sprite.frameIndex += VecI2(1, 0);
 }
+
+void ScoreCounter::ResetScore() {
+	sprite.frameIndex = VecI2(0, 0);
+}
