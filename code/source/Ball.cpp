@@ -7,6 +7,7 @@ using namespace Halib;
 
 Ball::Ball() : Entity(Sprite(GRAPHIC_PATH, VecI2(1, 1)), Vec3(200, 120, 0)){
 	
+	speed = baseSpeed;
 	direction = CalculateRandomDir();
 	failsound = Halib::audiosystem.LoudSound(FAILSOUND_PATH);
 }
@@ -38,7 +39,7 @@ Halib::Vec2 Ball::CalculateRandomDir() {
 	
 	return vector;
 	*/
-	if (direction.x == 0 && direction.y == 0) return Vec2(0.3f, 0.5f);
+	if (direction.x == 0 && direction.y == 0) return Vec2(1.0f, 0.0f);
 	return direction;
 }
 
@@ -100,4 +101,15 @@ void Ball::IncreaseSpeed(float increase) {
 
 float Ball::GetSpeed() {
 	return speed;
+}
+
+void Ball::ResetBall(int lastPlayerScored) {
+	ResetGracePeriod();
+	SetPosition(Vec3(200, 120, GetPosition().z));
+	speed = baseSpeed;
+	speedModifier = 1.0f;
+	Active = true;
+
+	if (lastPlayerScored == 0) SetDirection(Vec2(0, 1));
+	else SetDirection(Vec2(1, 0));
 }

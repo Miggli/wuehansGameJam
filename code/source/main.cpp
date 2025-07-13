@@ -6,6 +6,10 @@
 #include "Bounds.h"
 #include <iostream>
 
+void Halib::DrawUI() {
+
+}
+
 int main() 
 {
 	Halib::Init();
@@ -19,6 +23,9 @@ int main()
 	std::shared_ptr<Bounds> bounds = std::make_shared<Bounds>(ball);
 	Halib::AddEntity(bounds);
 	
+
+	int lastControllerThatScored = 0;
+
 	int r = 148;
 	int g = 148;
 	int b = 156;
@@ -26,13 +33,9 @@ int main()
 	Halib::rendersystem.backgroundColor = Halib::Color(r/255.0f * 31.0f, g / 255.0f * 31.0f, b / 255.0f * 31.0f);
 	while(!Halib::GetShouldClose()) 
 	{
-		
-		
-		//Normally, you don't need to touch this loop. Just let your classes inherit from Entity
-		//to build your game (see Character.h)
-
-		//This updates all halibs system, including inputs, graphics and entity logic
-		//Take a look: Select Update() and press F12(?)
+		if (!ball->isActive) {
+			
+		}
 		Halib::Update();
 	}
 	

@@ -28,6 +28,13 @@ Bounds::Bounds(std::shared_ptr<Ball> ball) : Halib::Entity(Sprite(GRAPHIC_PATH, 
 	hitSoundToPlay = hitaudio;
 	kickers = CreateKickers();
 
+	player1Counter = std::make_shared<ScoreCounter>();
+	player1Counter->SetPosition(Vec3(GetPosition().x- player1Counter->sprite.GetFrameSize().x -64, GetPosition().y + 72, 0));
+	AddEntity(player1Counter);
+	player2Counter = std::make_shared<ScoreCounter>();
+	player2Counter->SetPosition(Vec3(GetPosition().x + sprite.GetFrameSize().x + 64, GetPosition().y + 72, 0));
+	AddEntity(player2Counter);
+
 }
 void Bounds::Update(float deltaTime) {
 
@@ -41,6 +48,12 @@ void Bounds::Update(float deltaTime) {
 	
 }
 void Bounds::HandleInputs() {
+
+	if (!myball->Active) {
+		if (GetButtonPressed(0, START) && GetButtonPressed(0, START)) {
+			myball->ResetBall(lastPlayerScored);
+		}
+	}
 
 	if (GetButtonPressed(0, UP)) {
 
@@ -98,19 +111,23 @@ bool Bounds::isBallInBounds() {
 	if (point.y < minY) 
 	{
 		myball->SetPosition(Vec3(myball->GetPosition().x, minY, myball->GetPosition().z));
+		PlayerScore(0);
 		return false;
 	}
 
 	if (point.x > maxX) {
 		myball->SetPosition(Vec3(maxX - (myball->sprite.GetFrameSize().x), myball->GetPosition().y, myball->GetPosition().z));
+		PlayerScore(1);
 		return false;
 	}
 	if (point.y > maxY) {
 		myball->SetPosition(Vec3(myball->GetPosition().x, maxY - (myball->sprite.GetFrameSize().y ), myball->GetPosition().z));
+		PlayerScore(0);
 		return false;
 	}
 	if (point.x < minX) {
 		myball->SetPosition(Vec3(minX, myball->GetPosition().y, myball->GetPosition().z));
+		PlayerScore(1);
 		return false;
 	}
 	return true;
@@ -138,14 +155,14 @@ void Bounds::BounceBall(Directions dir, float distanceFactor){
 
 		case top:
 			
-			newBallDir.y = abs(newBallDir.y) * 0.5f * 1 / distanceFactor;
+			newBallDir.y = fabs(newBallDir.y) * 0.5f * 1 / distanceFactor;
 			newBallDir.x = ballDirSign.x * distanceFactor;
 			if (myball->GetMiddlePoint().y <= minY) newBallPos.y = minY +1;
 			break;
 
 		case bottom:
 			
-			newBallDir.y = -1 * abs(newBallDir.y) * 0.5f * 1/distanceFactor;
+			newBallDir.y = -1 * fabs(newBallDir.y) * 0.5f * 1/distanceFactor;
 			newBallDir.x = ballDirSign.x * distanceFactor;
 			if (myball->GetMiddlePoint().y >= maxY) newBallPos.y = maxY - 1 - myball->sprite.GetFrameSize().y;
 			
@@ -153,14 +170,14 @@ void Bounds::BounceBall(Directions dir, float distanceFactor){
 
 		case left:
 			
-			newBallDir.x = abs(newBallDir.x) * 0.5f * 1 / distanceFactor;
+			newBallDir.x = fabs(newBallDir.x) * 0.5f * 1 / distanceFactor;
 			newBallDir.y = ballDirSign.y * distanceFactor;
 			if (myball->GetMiddlePoint().x >= minX) newBallPos.x = minX + 1;
 			break;
 
 		case right:
 			
-			newBallDir.x = -1 * abs(newBallDir.x) * 0.5f * 1 / distanceFactor;;
+			newBallDir.x = -1 * fabs(newBallDir.x) * 0.5f * 1 / distanceFactor;;
 			newBallDir.y = ballDirSign.y * distanceFactor;
 			if (myball-> GetMiddlePoint().x >= maxX) newBallPos.x = maxX - 1 - myball->sprite.GetFrameSize().x;
 			break;
@@ -211,5 +228,20 @@ std::array<std::shared_ptr<Kicker>, 4> Bounds::CreateKickers() {
 	Halib::AddEntity(localKickers[3]);
 
 	return localKickers;
+}
+
+void Bounds::PlayerScore(int controllerID) {
+	if (controllerID == 0) {
+		player1Score++;
+		lastPlayerScored = 0;
+		player1Counter->AddScoreVisual();
+		return;
+	}
+	else {
+		player2Score++;
+		lastPlayerScored = 1;
+		player1Counter->AddScoreVisual();
+		return;
+	}
 }
 

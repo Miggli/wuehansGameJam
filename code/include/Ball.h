@@ -16,7 +16,8 @@ struct Ball : public Halib::Entity
 
 private:
 	
-	float speed = 50.0f;
+	float baseSpeed = 50.0f;
+	float speed;
 
 	bool isInGracePeriod = false;
 	float gracePeriodTime = 0.10f;
@@ -37,5 +38,6 @@ public:
 	void ResetGracePeriod();
 	float GetSpeed();
 
+	void ResetBall(int lastPlayerScored);
 	bool Active = true;
 };

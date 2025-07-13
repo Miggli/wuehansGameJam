@@ -7,6 +7,7 @@
 #include <array>
 #include "Enums.h"
 #include "Kicker.h"
+#include <ScoreCounter.h>
 struct Bounds : public Halib::Entity
 {
 
@@ -26,19 +27,29 @@ public:
 	
 	std::shared_ptr<Halib::Audio> hitSoundToPlay;
 
+
 	Bounds(std::shared_ptr<Ball> ball);
 	
 	void Update(float deltaTime) override;
 
+
 	
 	
 private: 
+
+	int lastPlayerScored = 0;
+
+	int player1Score = 0;
+	int player2Score = 0;
+
 	std::shared_ptr<Ball> myball;
 	int maxY;
 	int maxX;
 	int minY;
 	int minX;
 
+	std::shared_ptr<ScoreCounter> player1Counter;
+	std::shared_ptr<ScoreCounter> player2Counter;
 
 	void HandleInputs();
 	bool isBallInBounds();
@@ -55,4 +66,6 @@ private:
 	//1 - Right Kicker
 	//2 - Bottom Kicker
 	//3 - Left Kicker
+
+	void PlayerScore(int controllerID);
 };
