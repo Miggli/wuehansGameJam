@@ -218,13 +218,13 @@ std::array<std::shared_ptr<Kicker>, 4> Bounds::CreateKickers() {
 	localKickers[0] = std::make_shared<Kicker>(Vec3(200, 120, -1), Halib::UP);
 	
 	localKickers[1] = std::make_shared<Kicker>(Vec3(200, 120, -1), Halib::RIGHT);
-	localKickers[1]->sprite.frameIndex = VecI2(2, 1);
+	localKickers[1]->sprite.frameIndex = VecI2(2, 0);
 
 	localKickers[2] = std::make_shared<Kicker>(Vec3(200, 121, -1), Halib::DOWN);
 	localKickers[2]->sprite.flipY = true;
 
 	localKickers[3] = std::make_shared<Kicker>(Vec3(200, 120, -1), Halib::LEFT);
-	localKickers[3]->sprite.frameIndex = VecI2(2, 1);
+	localKickers[3]->sprite.frameIndex = VecI2(2, 0);
 	localKickers[3]->sprite.flipX = true;
 
 	Halib::AddEntity(localKickers[0]);
