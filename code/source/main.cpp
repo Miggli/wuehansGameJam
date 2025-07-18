@@ -34,6 +34,11 @@ int main()
 	while(!Halib::GetShouldClose()) 
 	{
 		Halib::Update();
+		
+		//This is stupid -_-
+		//DeltaTime > 1.0f only in the first frame during resource load
+		if(Halib::GetDeltaTime() < 1.0f)
+			ball->Active = true;
 	}
 	
 	return 0;
