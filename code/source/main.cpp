@@ -33,9 +33,6 @@ int main()
 	Halib::rendersystem.backgroundColor = Halib::Color(r/255.0f * 31.0f, g / 255.0f * 31.0f, b / 255.0f * 31.0f);
 	while(!Halib::GetShouldClose()) 
 	{
-		if (!ball->isActive) {
-			
-		}
 		Halib::Update();
 	}
 	
